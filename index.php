@@ -7,6 +7,8 @@ require_once("db.php");
 	{
 		//include("mainForm.php");
 		echo $url;
+		echo "<br>";
+		include("curl.php");
 	}
 	else if (!preg_match ("/(https?:\/\/[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]+)/", $url))
 	{
