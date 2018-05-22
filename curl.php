@@ -19,22 +19,21 @@
 		
 		$links = array_unique($match[0]);
 		
-		print_r($links);
-				
-		/* //parse_str($match, $links);
-		$match = array_map("unserialize", array_unique(array_map("serialize", $match)));
+		$length = count ($links);
 		
-		var_dump($match);
-		//var_dump($result);
-		var_dump($links[0]);
+		$body = "<body>" . PHP_EOL;
+		for ($i = 0; $i < $length; $i++)
+			{
+				if(isset($links[$i]))
+				{
+					$body .= "<a href='" . $links[$i] . "'>" . $links[$i] . "</a><br>" . PHP_EOL;
+				}
+			}
+		$body .= "</tbody>" . PHP_EOL;
 		
-		//var_dump(array_unique($match));
-			
-		//var_dump($links);
-		/* $links[1] = $match[1];
-		echo ($links[1]); */
-		
-		//close cURL resource, and free up system resources */
 		curl_close($curl);
+		
+		echo $body;
 	
 ?>
+		
