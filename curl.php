@@ -18,7 +18,6 @@
 		$links = array_unique($match[0]);
 		
 		$length = count ($links);
-		
 		$body = "<body>" . PHP_EOL;
 		for ($i = 0; $i < $length; $i++)
 			{
