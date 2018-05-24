@@ -13,6 +13,11 @@
 	?>
 
 <a href="index.php">Site Entry</a> | <a href="siteListing.php">Site Listing</a><br /><h1>Sites App</h1>
+<?php if(!isset($options['site_id']))
+		{
+			echo "Choose a site, please!";
+		}?>
+		<br /><br />
 	<form method="get" action="siteListing.php">
 		<select name="siteId">
 			<option value>Choose a site</option>
@@ -21,14 +26,14 @@
 		<input type="submit">
 	</form>
 	<section>
-		Choose a site, please!
-		<?php 
+		<?php 			
 		if(isset($id))
 		{
 			$id += 0;
-			echo $id . "<br>";
+			//echo $id . "<br>";
 			$returnedLinks = returnLinks ($db, $id);
-			var_dump($returnedLinks);
+			echo "Stored on, " . $option["date"];
+			echo " Results for " . $option["site"];
 			if (!isset($displayLinks)){$displayLinks = "";}
 			foreach($returnedLinks as $link)
 			{

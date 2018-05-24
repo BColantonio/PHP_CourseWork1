@@ -24,7 +24,6 @@
 			//bind parameter to placeholder
 			$stmt->bindParam(":site", $url, PDO::PARAM_STR);
 			$stmt->bindParam(":date", $date, PDO::PARAM_STR);
-			
 			//execute
 			$stmt->execute();
 			$last_id = (int)$db->lastInsertId();
@@ -66,10 +65,10 @@
 			$stmt->execute();
 			//retrieve
 			$urls = $stmt->fetchALL(PDO::FETCH_ASSOC);
-			$count = $stmt->rowCount();
-			?><p><?php
+			//$count = $stmt->rowCount();
+			/*?><p><?php
 			print ("$count links retrieved/stored.");?>
-			</p><?php
+			</p><?php*/
 			return $urls;
 		} catch(PDOException $e) {
 		exit("There was a problem retrieving the sites");

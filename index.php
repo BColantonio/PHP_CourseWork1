@@ -14,7 +14,7 @@ require_once("databaseCommands.php");
 	elseif (preg_match ("/(https?:\/\/[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]+)/", $url))
 	{
 		include("mainForm.php");
-		$date = date("m.d.y");
+		$date = date("m/d/y");
 		$urlAddReturn = addUrl($db, $url, $date);
 		if(is_string($urlAddReturn)) {
 			echo "<br>" . $urlAddReturn . "<br>";
@@ -23,6 +23,7 @@ require_once("databaseCommands.php");
 			addSites($db, $urlAddReturn, $links, $length);
 			echo "<br>Links for: " . $url . " " . $date . "<br>";
 		}
+		$url="";
 		//include("curl.php");
 		
 	}
@@ -30,7 +31,7 @@ require_once("databaseCommands.php");
 	{
 		include("mainForm.php");
 		
-		echo "* The url entered is incorrect or has already been recorded in the database.";
+		echo "* The url entered is incorrectly formatted.";
 	}
 		
 	switch($action){
