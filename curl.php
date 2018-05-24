@@ -12,8 +12,6 @@
 		//grab URL and pass it to the browser
 		$result = curl_exec($curl);
 		
-		//array_unique($links);
-		
 		//match page links
 		preg_match_all("/(https?:\/\/[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]+)/",$result, $match);
 		

@@ -1,15 +1,24 @@
 <?php
 require_once("db.php");
+require_once("databaseCommands.php");
 
 	$url = filter_input(INPUT_POST, "url", FILTER_SANITIZE_URL) ?? 	filter_input (INPUT_GET, "url", FILTER_SANITIZE_URL) ?? null;
 	
-	if (preg_match ("/(https?:\/\/[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]+)/", $url))
+	if (!isset($url))
 	{
-		//include("mainForm.php");
-		echo $url;
-		echo "<br>";
+		include("mainForm.php");
+	}
+	else if (preg_match ("/(https?:\/\/[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]+)/", $url))
+	{
+		include("mainForm.php");
 		include("curl.php");
-		//include("siteListing.php");
+		$date = date("m.d.y");
+		$last_id = addUrl($db, $url, $date);
+		echo $last_id;
+		addSites($db, $last_id, $links, $length);
+		echo "<br>Links for: " . $url . " " . $date . "<br>";
+		//include("curl.php");
+		
 	}
 	else if (!preg_match ("/(https?:\/\/[\da-z\.-]+\.[a-z\.]{2,6}[\/\w \.-]+)/", $url))
 	{
