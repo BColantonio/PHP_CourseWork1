@@ -23,7 +23,6 @@ require_once("databaseCommands.php");
 			addSites($db, $urlAddReturn, $links, $length);
 			echo "<br>Links for: " . $url . " " . $date . "<br>";
 		}
-		$url="";
 		//include("curl.php");
 		
 	}
